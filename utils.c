@@ -40,3 +40,29 @@ int	ft_atoi(const char *str)
 		return (-nbr);
 	return (nbr);
 }
+ void    *free_single(void **addr)
+ {
+     if (*addr)
+     {
+         free (*addr);
+         *addr = 0;
+     }
+     return (0);
+ }
+ 
+void	*free_double(void ***addr)
+{
+    int i;
+
+    i = 0;
+    if (*addr)
+    {
+        while ((*addr)[i])
+        {
+            free_single((void *)&(*addr)[i]);
+            i++;
+        }
+        free_single((void *)&(*addr));
+    }
+    return (0);
+}

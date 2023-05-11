@@ -1,0 +1,4 @@
+.vscode
+philo
+*.o
+*.a
