@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 11:54:15 by armartir          #+#    #+#             */
-/*   Updated: 2023/05/14 13:07:32 by armartir         ###   ########.fr       */
+/*   Updated: 2023/05/14 13:30:44 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,26 @@ int	is_dead(t_philos *philos, t_philo *philo)
 
 void	philo_sleep(t_philos *philos, t_philo *philo)
 {
+	pthread_mutex_lock(&philos->death);
 	print_msg(philos, philo, P_SLEEP, 0);
+	pthread_mutex_unlock(&philos->death);
 	ms_sleep(philo->time_to_sleep);
+	pthread_mutex_lock(&philos->death);
 	print_msg(philos, philo, P_THINK, 0);
+	pthread_mutex_unlock(&philos->death);
 }
 
 int	philo_life(t_philos *philos, t_philo *philo)
 {
 	pthread_mutex_lock(philo->left);
 	pthread_mutex_lock(philo->right);
+	pthread_mutex_lock(&philos->death);
 	print_msg(philos, philo, P_TFORK, 0);
+	pthread_mutex_unlock(&philos->death);
 	is_dead(philos, philo);
+	pthread_mutex_lock(&philos->death);
 	philo->last_meal = print_msg(philos, philo, P_EAT, 1);
+	pthread_mutex_unlock(&philos->death);
 	ms_sleep(philo->time_to_eat);
 	pthread_mutex_unlock(philo->left);
 	pthread_mutex_unlock(philo->right);

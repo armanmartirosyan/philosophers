@@ -34,8 +34,11 @@ all: $(NAME)
 
 bonus: all
 
-run:
+dead:
 	./philo 4 310 200 100
+
+nodead:
+	./philo 5 800 200 200  
 
 $(NAME): $(LIB_DIR) Makefile $(OBJS)
 	@make WAIT_COMPILE_MSG
