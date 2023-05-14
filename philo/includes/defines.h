@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 12:58:50 by armartir          #+#    #+#             */
-/*   Updated: 2023/05/13 16:34:20 by armartir         ###   ########.fr       */
+/*   Updated: 2023/05/14 10:03:05 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@
 # define E_NOMEM "Memory allocation error!\n"
 # define E_ARGNUM "Wrong number of arguments!\n"
 # define E_CTHREAD "Failed to create new thread\n"
+# define E_NEGNUM "Positive numbers required\n"
 
 #endif

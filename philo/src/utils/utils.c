@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 12:55:31 by armartir          #+#    #+#             */
-/*   Updated: 2023/05/13 14:52:08 by armartir         ###   ########.fr       */
+/*   Updated: 2023/05/14 12:05:14 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,28 @@ void	ft_putstr_fd(char *s, int fd)
 	if (s)
 		while (s[i] != '\0')
 			write(fd, &s[i++], 1);
+}
+
+int	check_args(char **argv, int argc)
+{
+	int	num;
+	int	i;
+
+	i = 0;
+	num = 0;
+	while (++i < argc)
+	{
+		num = ft_atoi(argv[i]);
+		if (0 > num)
+			return (EXIT_FAILURE);
+	}
+	return (EXIT_SUCCESS);
+}
+
+int	add_dead(t_philos *philos)
+{
+	pthread_mutex_lock(&philos->death_flag);
+	philos->die_flag++;
+	pthread_mutex_unlock(&philos->death_flag);
+	return (philos->die_flag);
 }

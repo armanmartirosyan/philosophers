@@ -1,8 +1,8 @@
 # Main Variables
 NAME     = philo
 GCC      = cc
-# CFLAGS   = -Wall -Wextra -Werror -pthread
-CFLAGS   = 
+CFLAGS   = -Wall -Wextra -Werror -g3 -fsanitize=thread
+# CFLAGS   = 
 RM       = rm -rf
 OUTPUT   = ./$(NAME)
 LIBS     = -I./includes/
@@ -35,7 +35,7 @@ all: $(NAME)
 bonus: all
 
 run:
-	./philo 5 100 50 75
+	./philo 4 310 200 100
 
 $(NAME): $(LIB_DIR) Makefile $(OBJS)
 	@make WAIT_COMPILE_MSG

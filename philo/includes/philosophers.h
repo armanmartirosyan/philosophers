@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philosophers.h                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/14 11:57:01 by armartir          #+#    #+#             */
+/*   Updated: 2023/05/14 13:06:53 by armartir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
@@ -8,49 +19,45 @@
 # include <stdlib.h>
 
 # include "defines.h"
-
-typedef struct philos {
-	pthread_t		*threads;
-	pthread_mutex_t	death;
-	pthread_mutex_t	msg;
-	int				hm_times;
-	int				philo_num;
-	int				die_flag;
-	struct philo	*philo;
-}	t_philos;
-
-typedef struct philo {
-	pthread_mutex_t	mutex;
-	pthread_mutex_t	*left;
-	pthread_mutex_t	*right;
-	int				id;
-	int				time_to_die;
-	int				time_to_eat;
-	int				time_to_sleep;
-	int				last_meal;
-	t_philos		*philos;
-}	t_philo;
+# include "philo_struct.h"
 
 // Initialization
-void		chopstick_config(t_philos *philos);
-int			philo_config(t_philos *philos, char **argv);
-t_philos	*philo_init(t_philos *philos, char **argv);
+void			chopstick_config(t_philos *philos);
+int				philo_config(t_philos *philos, char **argv);
+t_philos		*philo_init(t_philos *philos, char **argv);
 
 // Utils
-int			ft_isdigit(int c);
-int			force_quit(char *msg);
-void		*fail_init(void);
-int			ft_atoi(const char *str);
-void		*free_single(void **addr);
-void		*free_double(void ***addr);
-void		ft_putstr_fd(char *s, int fd);
+int				ft_isdigit(int c);
+int				force_quit(char *msg);
+void			*fail_init(void);
+int				ft_atoi(const char *str);
+void			*free_single(void **addr);
+void			*free_double(void ***addr);
+void			ft_putstr_fd(char *s, int fd);
 
 // Messeges
-void	dead_msg(t_philos *philos, t_philo *philo, unsigned int time);
-void	print_msg(t_philos *philos, t_philo *philo, char *msg);
+void			dead_msg(t_philos *philos, t_philo *philo, unsigned int time);
+int				print_msg(t_philos *philos, t_philo *philo, char *msg, int f);
 
 // Time
 unsigned int	ft_get_time(void);
 void			ms_sleep(unsigned int time);
+
+// Check args
+int				check_args(char **argv, int argc);
+
+// Free
+void			free_all(t_philos *philos);
+void			*free_double(void ***addr);
+void			*free_single(void **addr);
+
+// Life cycle
+void			*start_matrix(void *arg);
+void			one_philo(t_philos *philos, t_philo *philo);
+int				philo_life(t_philos *philos, t_philo *philo);
+void			philo_sleep(t_philos *philos, t_philo *philo);
+int				is_dead(t_philos *philos, t_philo *philo);
+int				add_dead(t_philos *philos);
+int				philo_start(t_philos *philos);
 
 #endif

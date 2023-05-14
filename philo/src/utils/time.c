@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 16:11:55 by armartir          #+#    #+#             */
-/*   Updated: 2023/05/13 16:33:19 by armartir         ###   ########.fr       */
+/*   Updated: 2023/05/14 11:12:30 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,15 @@ unsigned int	ft_get_time(void)
 
 void	ms_sleep(unsigned int time)
 {
-	usleep(time * 1000);
+	struct timeval	now;
+	struct timeval	start;
+
+	gettimeofday(&now, NULL);
+	gettimeofday(&start, NULL);
+	while ((now.tv_sec - start.tv_sec) * 1000 + \
+		(now.tv_usec - start.tv_usec) / 1000 < time)
+	{
+		usleep(10);
+		gettimeofday(&now, NULL);
+	}
 }
