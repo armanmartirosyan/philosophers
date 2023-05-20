@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 12:55:31 by armartir          #+#    #+#             */
-/*   Updated: 2023/05/20 15:06:57 by armartir         ###   ########.fr       */
+/*   Updated: 2023/05/20 16:26:38 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,6 @@ int	check_args(char **argv, int argc)
 
 int	add_dead(t_philos *philos)
 {
-	pthread_mutex_lock(&philos->death_flag);
 	philos->die_flag++;
-	pthread_mutex_unlock(&philos->death_flag);
 	return (philos->die_flag);
 }

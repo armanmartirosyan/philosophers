@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 12:58:50 by armartir          #+#    #+#             */
-/*   Updated: 2023/05/20 15:08:07 by armartir         ###   ########.fr       */
+/*   Updated: 2023/05/20 18:25:23 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,11 @@
 # define E_ARGNUM "Wrong number of arguments!\n"
 # define E_CTHREAD "Failed to create new thread\n"
 # define E_NEGNUM "Only positive numbers required\n"
+# define E_PDETACH "Thread detach error\n"
+# define E_FORK "Fork error\n"
 
+// Semaphores
+# define S_PHILO "/semaphore_philo"
+# define S_MSG	"/semaphore_msg"
+# define S_DEAD "/semaphore_dead"
 #endif

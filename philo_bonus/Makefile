@@ -1,7 +1,7 @@
 # Main Variables
-NAME     = philo
+NAME     = philo_bonus
 GCC      = cc
-CFLAGS   = -Wall -Wextra -Werror
+CFLAGS   = -Wall -Wextra -Werror 
 # CFLAGS   = 
 RM       = rm -rf
 OUTPUT   = ./$(NAME)
@@ -35,10 +35,10 @@ all: $(NAME)
 bonus: all
 
 dead:
-	./philo 4 310 200 100
+	./philo_bonus 4 310 200 100
 
 nodead:
-	./philo 5 800 200 200  
+	./philo_bonus 5 800 200 200  
 
 $(NAME): $(LIB_DIR) Makefile $(OBJS)
 	@make WAIT_COMPILE_MSG
