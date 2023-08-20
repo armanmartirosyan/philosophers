@@ -23,13 +23,8 @@ The Dining Philosophers Problem embodies the challenges of resource allocation a
 3. Open your terminal and execute the following commands:
    ```shell
    make
-   ./philo
-  ```
-or
-```shell
-  make
-  ./philo_bonus
-```
+   ./philo or ./philo_bonus
+   ```
 
 ## Program Arguments
 To run the program, provide the following arguments:
